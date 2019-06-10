@@ -157,7 +157,7 @@
             this.contentsListBox2.HorizontalScrollbar = true;
             this.contentsListBox2.Location = new System.Drawing.Point(934, 149);
             this.contentsListBox2.Name = "contentsListBox2";
-            this.contentsListBox2.Size = new System.Drawing.Size(159, 264);
+            this.contentsListBox2.Size = new System.Drawing.Size(282, 264);
             this.contentsListBox2.TabIndex = 19;
             this.contentsListBox2.SelectedIndexChanged += new System.EventHandler(this.contentsListBox2_SelectedIndexChanged);
             // 
@@ -395,7 +395,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 424);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1105, 5);
+            this.panel2.Size = new System.Drawing.Size(1228, 5);
             this.panel2.TabIndex = 27;
             // 
             // panel1
@@ -404,7 +404,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1105, 7);
+            this.panel1.Size = new System.Drawing.Size(1228, 7);
             this.panel1.TabIndex = 26;
             // 
             // openFileDialog1
@@ -416,7 +416,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1105, 429);
+            this.ClientSize = new System.Drawing.Size(1228, 429);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox2);

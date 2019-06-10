@@ -146,7 +146,7 @@ namespace FTP_Connect
             {
                 string fileName = Path.GetFileName(filePath);
                 // string path = hostnameTextBox.Text + "/" + directoryTextBox.Text + "/" + fileName;
-                string path = "ftp://217.199.187.250/"  + directoryTextBox.Text + "/" + fileName;
+                string path = "ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net" + directoryTextBox.Text + "/" + fileName;
                 
                 FtpWebRequest request = (FtpWebRequest)WebRequest.Create(path);
                 request.Credentials = new NetworkCredential(username, password); // get the credentials
@@ -195,10 +195,10 @@ namespace FTP_Connect
             contentsListBox2.Items.Clear();
             filenameTextBox.Clear();
             successStatusLabel.Text = "";
-
+            var direct = directoriesListBox.SelectedItem.ToString() + "/" + contentsListBox.Text;
             // show the files
             //List<string> files = ShowFiles(hostnameTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, contentsListBox.Text);
-            List<string> files = ShowFiles("ftp://217.199.187.250/", "thehjohnson.com", "4hjU-7E-X", contentsListBox.Text);
+            List<string> files = ShowFiles("ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net", @"technicallywright\twright", "Password@12", direct);
             directoryTextBox.Text = contentsListBox.Text;           
             foreach (string item in files)
             {
@@ -210,7 +210,7 @@ namespace FTP_Connect
         {
             contentsListBox.Items.Clear();
             //List<string> files = ShowFiles(hostnameTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, directoriesListBox.Text);
-            List<string> files = ShowFiles("ftp://217.199.187.250/", "thehjohnson.com", "4hjU-7E-X", directoriesListBox.Text);
+            List<string> files = ShowFiles("ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net", @"technicallywright\twright", "Password@12", directoriesListBox.Text);
             foreach (string item in files)
             {
                 contentsListBox.Items.Add(item);
@@ -224,7 +224,7 @@ namespace FTP_Connect
                 filenameTextBox.Text = Path.GetFileName(contentsListBox2.SelectedItem.ToString());
                 // show the files
                 //List<string> files = ShowFiles(hostnameTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, directoryTextBox.Text + "/" + filenameTextBox.Text);
-                List<string> files = ShowFiles("ftp://217.199.187.250/", "thehjohnson.com", "4hjU-7E-X", directoryTextBox.Text + "/" + filenameTextBox.Text); //"public_html/" + listBox1.Text
+                List<string> files = ShowFiles("ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net", @"technicallywright\twright", "Password@12", directoryTextBox.Text + "/" + filenameTextBox.Text); //"public_html/" + listBox1.Text
                 contentsListBox2.Items.Clear();
                 foreach (string item in files)
                 {
@@ -282,7 +282,7 @@ namespace FTP_Connect
             successStatusLabel.Text = "";
 
             //UploadFileToFtp(filepath, usernameTextBox.Text, passwordTextBox.Text);
-            UploadFileToFtp(filepath, "thehjohnson.com", "4hjU-7E-X");           
+            UploadFileToFtp(filepath, @"technicallywright\twright", "Password@12");           
         }
 
         private void deletePictureBox_Click(object sender, EventArgs e)
@@ -291,7 +291,7 @@ namespace FTP_Connect
             {
                 successStatusLabel.Text = "";
                 // DeleteFile(hostnameTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, directoryTextBox.Text, filenameTextBox.Text);
-                DeleteFile("ftp://217.199.187.250/", "thehjohnson.com", "4hjU-7E-X", directoryTextBox.Text, filenameTextBox.Text);
+                DeleteFile("ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net", @"technicallywright\twright", "Password@12", directoryTextBox.Text, filenameTextBox.Text);
                 successStatusLabel.Text = "Delete Successful";
             }
             catch (Exception ex)
@@ -320,7 +320,7 @@ namespace FTP_Connect
                 {
                     successStatusLabel.Text = "";
                     //DownloadFile(hostnameTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, directoryTextBox.Text, filenameTextBox.Text, destinationPathLabel.Text);
-                    DownloadFile("ftp://217.199.187.250/", "thehjohnson.com", "4hjU-7E-X", directoryTextBox.Text, filenameTextBox.Text, destinationPathLabel.Text);
+                    DownloadFile("ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net", @"technicallywright\twright", "Password@12", directoryTextBox.Text, filenameTextBox.Text, destinationPathLabel.Text);
                     successStatusLabel.Text = "Download Successful";
                 }
             }

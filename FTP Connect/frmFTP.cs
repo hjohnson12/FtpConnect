@@ -52,11 +52,9 @@ namespace FTP_Connect
             try
             {
                 // implement a file transfer protocol client
-                //FtpWebRequest Request = (FtpWebRequest)WebRequest.Create(txtBoxHostname.Text);
-                FtpWebRequest Request = (FtpWebRequest)WebRequest.Create("ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net");
+                FtpWebRequest Request = (FtpWebRequest)WebRequest.Create(txtBoxHostname.Text);
                 Request.Method = WebRequestMethods.Ftp.ListDirectory;     // request a list of the directory
-                //Request.Credentials = new NetworkCredential(txtBoxUsername.Text, txtBoxPword.Text);
-                Request.Credentials = new NetworkCredential(@"technicallywright\twright", @"Password@12");   // initialize instance with specified username/password
+                Request.Credentials = new NetworkCredential(txtBoxUsername.Text, txtBoxPword.Text); // initialize instance with specified username/password
                 FtpWebResponse Response = (FtpWebResponse)Request.GetResponse();   // encapsulates a FTP server's response to a request
                 Stream ResponseStream = Response.GetResponseStream();     // provides a generic review of a sequence of bytes - abstract class
                 StreamReader Reader = new StreamReader(ResponseStream);  // reads characters from a byte stream in a particular encoding
@@ -147,8 +145,7 @@ namespace FTP_Connect
             {
                 string fileName = Path.GetFileName(filePath);
                 var directoryPath = lstBoxRootDirs.Text + "/" + lstBoxDirContents1.Text;
-                //string path = txtBoxHostname.Text + "/" + txtBoxCurrDir.Text + "/" + fileName;
-                string path = "ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net" + "/" + directoryPath + "/" + fileName;
+                string path = txtBoxHostname.Text + "/" + directoryPath + "/" + fileName;
 
                 FtpWebRequest request = (FtpWebRequest)WebRequest.Create(path);
                 request.Credentials = new NetworkCredential(username, password); // get the credentials
@@ -191,17 +188,15 @@ namespace FTP_Connect
             lstBoxFtpStatus.Items.Add("•" + responseFileDelete.StatusDescription);
         }
 
-
         private void lstBoxDirContents1_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtBoxCurrDir.Text = lstBoxDirContents1.SelectedItem.ToString();
             lstBoxDirContents2.Items.Clear();
             txtBoxFilename.Clear();
             lblOpsStatus.Text = "";
-            var direct = lstBoxRootDirs.SelectedItem.ToString() + "/" + lstBoxDirContents1.Text;
+            var dir = lstBoxRootDirs.SelectedItem.ToString() + "/" + lstBoxDirContents1.Text;
             // show the files
-            //List<string> files = ShowFiles(txtBoxHostname.Text, txtBoxUsername.Text, txtBoxPword.Text, lstBoxDirContents1.Text);
-            List<string> files = ShowFiles("ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net", @"technicallywright\twright", "Password@12", direct);
+            List<string> files = ShowFiles(txtBoxHostname.Text, txtBoxUsername.Text, txtBoxPword.Text, dir);
             txtBoxCurrDir.Text = lstBoxDirContents1.Text;
             foreach (string item in files)
             {
@@ -212,8 +207,7 @@ namespace FTP_Connect
         private void lstBoxRootDirs_SelectedIndexChanged(object sender, EventArgs e)
         {
             lstBoxDirContents1.Items.Clear();
-            //List<string> files = ShowFiles(txtBoxHostname.Text, txtBoxUsername.Text, txtBoxPword.Text, lstBoxRootDirs.Text);
-            List<string> files = ShowFiles("ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net", @"technicallywright\twright", "Password@12", lstBoxRootDirs.Text);
+            List<string> files = ShowFiles(txtBoxHostname.Text, txtBoxUsername.Text, txtBoxPword.Text, lstBoxRootDirs.Text);
             foreach (string item in files)
             {
                 lstBoxDirContents1.Items.Add(item);
@@ -224,15 +218,14 @@ namespace FTP_Connect
         {
             try
             {
-                //txtBoxCurrDir.Text = lstBoxDirContents2.SelectedItem.ToString();
                 txtBoxFilename.Text = Path.GetFileName(lstBoxDirContents2.SelectedItem.ToString());
                 // show the files
-                //List<string> files = ShowFiles(txtBoxHostname.Text, txtBoxUsername.Text, txtBoxPword.Text, txtBoxCurrDir.Text + "/" + txtBoxFilename.Text);
-                List<string> files = ShowFiles("ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net", @"technicallywright\twright", "Password@12", lstBoxRootDirs.Text + "/" + txtBoxCurrDir.Text + "/" + txtBoxFilename.Text); //"public_html/" + listBox1.Text
+                var dir = lstBoxRootDirs.Text + "/" + txtBoxCurrDir.Text + "/" + txtBoxFilename.Text;
+                List<string> files = ShowFiles(txtBoxHostname.Text, txtBoxUsername.Text, txtBoxPword.Text, dir);
                 lstBoxDirContents2.Items.Clear();
-                foreach (string item in files)
+                foreach (string file in files)
                 {
-                    lstBoxDirContents2.Items.Add(item);
+                    lstBoxDirContents2.Items.Add(file);
                 }
             }
             catch (Exception ex)
@@ -249,10 +242,10 @@ namespace FTP_Connect
             FormBorderStyle = FormBorderStyle.FixedSingle;
 
             // show tooltip
-            toolTipHostname.SetToolTip(txtBoxHostname, "Ex: ftp://111.111.111.111/");
-            toolTipDownload.SetToolTip(picBoxDownload, "Download File");
-            toolTipUpload.SetToolTip(picBoxUpload, "Upload File");
-            toolTipDelete.SetToolTip(picBoxDelete, "Delete File");
+            toolTipHostname.SetToolTip(txtBoxHostname, "Ex: ftp://111.111.111.111");
+            toolTipDownload.SetToolTip(picBoxDownload, "Download File.\nHave destination path selected and file selected.");
+            toolTipUpload.SetToolTip(picBoxUpload, "Upload File.\nHave upload file path selected and directory selected.");
+            toolTipDelete.SetToolTip(picBoxDelete, "Delete File.\nHave file to delete selected.");
         }
 
         private void picBoxOpenFileToUpload_Click(object sender, EventArgs e)
@@ -286,7 +279,7 @@ namespace FTP_Connect
             lblOpsStatus.Text = "";
 
             //UploadFileToFtp(filepath, txtBoxUsername.Text, txtBoxPword.Text);
-            UploadFileToFtp(filepath, @"technicallywright\twright", "Password@12");
+            UploadFileToFtp(filepath, txtBoxUsername.Text, txtBoxPword.Text);
         }
 
         private void picBoxDelete_Click(object sender, EventArgs e)
@@ -295,8 +288,7 @@ namespace FTP_Connect
             {
                 lblOpsStatus.Text = "";
                 var dirPath = lstBoxRootDirs.Text + "/" + lstBoxDirContents1.Text;
-                // DeleteFile(txtBoxHostname.Text, txtBoxUsername.Text, txtBoxPword.Text, txtBoxCurrDir.Text, txtBoxFilename.Text);
-                DeleteFile("ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net", @"technicallywright\twright", "Password@12", dirPath, txtBoxFilename.Text);
+                DeleteFile(txtBoxHostname.Text, txtBoxUsername.Text, txtBoxPword.Text, dirPath, txtBoxFilename.Text);
                 lblOpsStatus.Text = "Delete Successful";
             }
             catch (Exception ex)
@@ -325,8 +317,7 @@ namespace FTP_Connect
                 {
                     lblOpsStatus.Text = "";
                     var dirPath = lstBoxRootDirs.Text + "/" + lstBoxDirContents1.Text; // Directory path
-                    //DownloadFile(txtBoxHostname.Text, txtBoxUsername.Text, txtBoxPword.Text, txtBoxCurrDir.Text, txtBoxFilename.Text, lblDistPath.Text);
-                    DownloadFile("ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net", @"technicallywright\twright", "Password@12", dirPath, txtBoxFilename.Text, lblDistPath.Text);
+                    DownloadFile(txtBoxHostname.Text, txtBoxUsername.Text, txtBoxPword.Text, dirPath, txtBoxFilename.Text, lblDistPath.Text);
                     lblOpsStatus.Text = "Download Successful";
                 }
             }

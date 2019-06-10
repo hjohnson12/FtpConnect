@@ -293,8 +293,9 @@ namespace FTP_Connect
             try
             {
                 successStatusLabel.Text = "";
+                var directoryPath = directoriesListBox.Text + "/" + contentsListBox.Text;
                 // DeleteFile(hostnameTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, directoryTextBox.Text, filenameTextBox.Text);
-                DeleteFile("ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net", @"technicallywright\twright", "Password@12", directoryTextBox.Text, filenameTextBox.Text);
+                DeleteFile("ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net", @"technicallywright\twright", "Password@12", directoryPath, filenameTextBox.Text);
                 successStatusLabel.Text = "Delete Successful";
             }
             catch (Exception ex)

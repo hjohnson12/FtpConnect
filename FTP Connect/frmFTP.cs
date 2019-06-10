@@ -147,7 +147,7 @@ namespace FTP_Connect
                 string fileName = Path.GetFileName(filePath);
                 var directoryPath = directoriesListBox.Text + "/" + contentsListBox.Text;
                 // string path = hostnameTextBox.Text + "/" + directoryTextBox.Text + "/" + fileName;
-                string path = "ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net" + directoryPath + "/" + fileName;
+                string path="ftp://waws-prod-dm1-039.ftp.azurewebsites.windows.net" + "/" + directoryPath + "/" + fileName;
                 
                 FtpWebRequest request = (FtpWebRequest)WebRequest.Create(path);
                 request.Credentials = new NetworkCredential(username, password); // get the credentials

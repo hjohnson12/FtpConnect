@@ -49,8 +49,13 @@
             this.connectButton = new System.Windows.Forms.Button();
             this.lblConnectStatus = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.picBoxUpload = new System.Windows.Forms.PictureBox();
+            this.picBoxDelete = new System.Windows.Forms.PictureBox();
+            this.picBoxDownload = new System.Windows.Forms.PictureBox();
+            this.openFilePictureBox = new System.Windows.Forms.PictureBox();
             this.lblUploadFilename = new System.Windows.Forms.Label();
             this.lblDistPath = new System.Windows.Forms.Label();
+            this.openFolderPictureBox = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lblOpsStatus = new System.Windows.Forms.Label();
             this.toolTipHostname = new System.Windows.Forms.ToolTip(this.components);
@@ -63,20 +68,15 @@
             this.toolTipDelete = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.picBoxUpload = new System.Windows.Forms.PictureBox();
-            this.picBoxDelete = new System.Windows.Forms.PictureBox();
-            this.picBoxDownload = new System.Windows.Forms.PictureBox();
-            this.openFilePictureBox = new System.Windows.Forms.PictureBox();
-            this.openFolderPictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUpload)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxDownload)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.openFilePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.openFolderPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lstBoxRootDirs
@@ -271,6 +271,52 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Download/Upload/Delete File";
             // 
+            // picBoxUpload
+            // 
+            this.picBoxUpload.BackColor = System.Drawing.Color.Transparent;
+            this.picBoxUpload.Image = global::FTP_Connect.Properties.Resources.upload;
+            this.picBoxUpload.Location = new System.Drawing.Point(59, 72);
+            this.picBoxUpload.Name = "picBoxUpload";
+            this.picBoxUpload.Size = new System.Drawing.Size(37, 38);
+            this.picBoxUpload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBoxUpload.TabIndex = 29;
+            this.picBoxUpload.TabStop = false;
+            this.picBoxUpload.Click += new System.EventHandler(this.picBoxUpload_Click);
+            // 
+            // picBoxDelete
+            // 
+            this.picBoxDelete.Image = global::FTP_Connect.Properties.Resources.icons8_delete_32;
+            this.picBoxDelete.Location = new System.Drawing.Point(109, 72);
+            this.picBoxDelete.Name = "picBoxDelete";
+            this.picBoxDelete.Size = new System.Drawing.Size(37, 38);
+            this.picBoxDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBoxDelete.TabIndex = 28;
+            this.picBoxDelete.TabStop = false;
+            this.picBoxDelete.Click += new System.EventHandler(this.picBoxDelete_Click);
+            // 
+            // picBoxDownload
+            // 
+            this.picBoxDownload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picBoxDownload.Image = global::FTP_Connect.Properties.Resources.icons8_download_from_the_cloud_32;
+            this.picBoxDownload.Location = new System.Drawing.Point(9, 72);
+            this.picBoxDownload.Name = "picBoxDownload";
+            this.picBoxDownload.Size = new System.Drawing.Size(37, 38);
+            this.picBoxDownload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBoxDownload.TabIndex = 27;
+            this.picBoxDownload.TabStop = false;
+            this.picBoxDownload.Click += new System.EventHandler(this.picBoxDownload_Click);
+            // 
+            // openFilePictureBox
+            // 
+            this.openFilePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("openFilePictureBox.Image")));
+            this.openFilePictureBox.Location = new System.Drawing.Point(319, 72);
+            this.openFilePictureBox.Name = "openFilePictureBox";
+            this.openFilePictureBox.Size = new System.Drawing.Size(34, 34);
+            this.openFilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.openFilePictureBox.TabIndex = 26;
+            this.openFilePictureBox.TabStop = false;
+            this.openFilePictureBox.Click += new System.EventHandler(this.picBoxOpenFileToUpload_Click);
+            // 
             // lblUploadFilename
             // 
             this.lblUploadFilename.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -290,6 +336,18 @@
             this.lblDistPath.TabIndex = 24;
             this.lblDistPath.Text = "No Path Selected";
             this.lblDistPath.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // openFolderPictureBox
+            // 
+            this.openFolderPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.openFolderPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("openFolderPictureBox.Image")));
+            this.openFolderPictureBox.Location = new System.Drawing.Point(319, 22);
+            this.openFolderPictureBox.Name = "openFolderPictureBox";
+            this.openFolderPictureBox.Size = new System.Drawing.Size(34, 34);
+            this.openFolderPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.openFolderPictureBox.TabIndex = 23;
+            this.openFolderPictureBox.TabStop = false;
+            this.openFolderPictureBox.Click += new System.EventHandler(this.picBoxOpenDestFolder_Click);
             // 
             // label7
             // 
@@ -353,64 +411,6 @@
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
-            // picBoxUpload
-            // 
-            this.picBoxUpload.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxUpload.Image = global::FTP_Connect.Properties.Resources.upload;
-            this.picBoxUpload.Location = new System.Drawing.Point(59, 72);
-            this.picBoxUpload.Name = "picBoxUpload";
-            this.picBoxUpload.Size = new System.Drawing.Size(37, 38);
-            this.picBoxUpload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBoxUpload.TabIndex = 29;
-            this.picBoxUpload.TabStop = false;
-            this.picBoxUpload.Click += new System.EventHandler(this.picBoxUpload_Click);
-            // 
-            // picBoxDelete
-            // 
-            this.picBoxDelete.Image = global::FTP_Connect.Properties.Resources.icons8_delete_32;
-            this.picBoxDelete.Location = new System.Drawing.Point(109, 72);
-            this.picBoxDelete.Name = "picBoxDelete";
-            this.picBoxDelete.Size = new System.Drawing.Size(37, 38);
-            this.picBoxDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBoxDelete.TabIndex = 28;
-            this.picBoxDelete.TabStop = false;
-            this.picBoxDelete.Click += new System.EventHandler(this.picBoxDelete_Click);
-            // 
-            // picBoxDownload
-            // 
-            this.picBoxDownload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picBoxDownload.Image = global::FTP_Connect.Properties.Resources.icons8_download_from_the_cloud_32;
-            this.picBoxDownload.Location = new System.Drawing.Point(9, 72);
-            this.picBoxDownload.Name = "picBoxDownload";
-            this.picBoxDownload.Size = new System.Drawing.Size(37, 38);
-            this.picBoxDownload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBoxDownload.TabIndex = 27;
-            this.picBoxDownload.TabStop = false;
-            this.picBoxDownload.Click += new System.EventHandler(this.picBoxDownload_Click);
-            // 
-            // openFilePictureBox
-            // 
-            this.openFilePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("openFilePictureBox.Image")));
-            this.openFilePictureBox.Location = new System.Drawing.Point(319, 72);
-            this.openFilePictureBox.Name = "openFilePictureBox";
-            this.openFilePictureBox.Size = new System.Drawing.Size(34, 34);
-            this.openFilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.openFilePictureBox.TabIndex = 26;
-            this.openFilePictureBox.TabStop = false;
-            this.openFilePictureBox.Click += new System.EventHandler(this.picBoxOpenFileToUpload_Click);
-            // 
-            // openFolderPictureBox
-            // 
-            this.openFolderPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.openFolderPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("openFolderPictureBox.Image")));
-            this.openFolderPictureBox.Location = new System.Drawing.Point(319, 22);
-            this.openFolderPictureBox.Name = "openFolderPictureBox";
-            this.openFolderPictureBox.Size = new System.Drawing.Size(34, 34);
-            this.openFolderPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.openFolderPictureBox.TabIndex = 23;
-            this.openFolderPictureBox.TabStop = false;
-            this.openFolderPictureBox.Click += new System.EventHandler(this.picBoxOpenDestFolder_Click);
-            // 
             // frmFTP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,13 +436,13 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUpload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxDownload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.openFilePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.openFolderPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

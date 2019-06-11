@@ -18,7 +18,7 @@ changes to the destination directory.
 * Text Editor application written in C# and Windows Forms. 
 ***Link to source***: https://github.com/hjohnson12/TextEditor 
 
- ***Not currently being worked on***
+ ***NOTE: Not currently being worked on***
    * May update the repositories to include Windows 10 Universal Windows Platform controls once Xaml Islands fully releases
 
 ### Screenshots

@@ -10,7 +10,7 @@ Made as part of a final project in *Fall 2016* for an introduction to desktop ap
   
 Other projects created for the final include:
 
-* Simple login program using a SQL local database with Visual Studio. This solution contains each one of the other 3 projects created for the final as a separate form once the user logs in.  
+* Simple login program using a SQL local database with Visual Studio. The solution contains each one of the other 3 projects created for the final as a separate form once the user logs in.  
 ***Link to source***: https://github.com/hjohnson12/LoginPanel 
 * Simple implementation of a file watcher program that watched a source directory for changes and published the 
 changes to the destination directory. 

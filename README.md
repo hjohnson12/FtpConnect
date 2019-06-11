@@ -7,18 +7,19 @@ Made as part of a final project in *Fall 2016* for an introduction to desktop ap
 
   * **NOTE:** Since this application was made for an intro class, it's recommended to run on a test ftp server.
   * Because of simplicity directories only span the few list boxes
-
+  
 Other projects created for the final include:
 
-* Simple login program using a SQL local database with Visual Studio. 
-***Link to source***: 
+* Simple login program using a SQL local database with Visual Studio. This solution contains each one of the other 3 projects created for the final as a separate form once the user logs in.  
+***Link to source***: https://github.com/hjohnson12/LoginPanel 
 * Simple implementation of a file watcher program that watched a source directory for changes and published the 
 changes to the destination directory. 
-***Link to source***:  
+***Link to source***: https://github.com/hjohnson12/FileSync
 * Text Editor application written in C# and Windows Forms. 
 ***Link to source***: https://github.com/hjohnson12/TextEditor 
 
-
+ ***Not currently being worked on***
+   * May update the repositories to include Windows 10 Universal Windows Platform controls once Xaml Islands fully releases
 
 ### Screenshots
 

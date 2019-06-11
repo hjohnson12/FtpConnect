@@ -1,7 +1,9 @@
 # FtpConnect - Windows Forms
 
 A basic ftp application made with C# and Windows forms that connects to a ftp host and includes simple operations such as read contents 
-in a directory, upload a file, delete a file, or download a file. Made as part of a final project in *Fall 2016* for an introduction to desktop app development class. 
+in a directory, upload a file, delete a file, or download a file. 
+
+Made as part of a final project in *Fall 2016* for an introduction to desktop app development class. 
 
   * **NOTE:** Since this application was made for an intro class, it's recommended to run on a test ftp server.
   * Because of simplicity directories only span the few list boxes
